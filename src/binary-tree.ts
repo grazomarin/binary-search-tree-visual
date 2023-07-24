@@ -112,6 +112,11 @@ export const Tree = () => {
 		return returnArray;
 	}
 
+	function inorder(node = tree): number[] {
+		if (!node) return [];
+		return [...inorder(node.left), node.value, ...inorder(node.right)];
+	}
+
 	return {
 		getTree: () => tree,
 		prettyPrint,
@@ -120,5 +125,6 @@ export const Tree = () => {
 		remove,
 		find,
 		levelOrder,
+		inorder,
 	};
 };
