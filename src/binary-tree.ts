@@ -122,6 +122,11 @@ export const Tree = () => {
 		return [node.value, ...preorder(node.left), ...preorder(node.right)];
 	}
 
+	function postorder(node = tree): number[] {
+		if (!node) return [];
+		return [...postorder(node.left), ...postorder(node.right), node.value];
+	}
+
 	return {
 		getTree: () => tree,
 		prettyPrint,
@@ -132,5 +137,6 @@ export const Tree = () => {
 		levelOrder,
 		inorder,
 		preorder,
+		postorder,
 	};
 };
