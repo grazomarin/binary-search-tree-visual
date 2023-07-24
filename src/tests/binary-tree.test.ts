@@ -114,4 +114,12 @@ describe('Binary Search Tree FC', () => {
 		bst.buildTree([1, 2, 3, 4, 5]);
 		expect(bst.postorder()).toEqual([2, 1, 5, 4, 3]);
 	});
+
+	it('returns the height of the tree', () => {
+		const bst = Tree();
+		bst.buildTree([1, 2, 3, 4, 5]);
+		expect(bst.height()).toBe(3);
+		bst.buildTree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+		expect(bst.height()).toBe(4);
+	});
 });

@@ -127,6 +127,13 @@ export const Tree = () => {
 		return [...postorder(node.left), ...postorder(node.right), node.value];
 	}
 
+	function height(node = tree, h = 0): number {
+		if (!node) return h;
+		const left = height(node.left, h + 1);
+		const right = height(node.right, h + 1);
+		return left >= right ? left : right;
+	}
+
 	return {
 		getTree: () => tree,
 		prettyPrint,
@@ -138,5 +145,6 @@ export const Tree = () => {
 		inorder,
 		preorder,
 		postorder,
+		height,
 	};
 };
