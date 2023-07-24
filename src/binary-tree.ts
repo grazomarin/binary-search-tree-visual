@@ -141,6 +141,15 @@ export const Tree = () => {
 		if (value > node.value) return depth(value, node.right, d + 1);
 	}
 
+	function isBalanced(node = tree, h = 0) {
+		if (!node) return h;
+		const left = height(node.left, h + 1);
+		const right = height(node.right, h + 1);
+		const diff = left - right;
+		if (diff === -1 || diff === 0 || diff === 1) return true;
+		else return false;
+	}
+
 	return {
 		getTree: () => tree,
 		prettyPrint,
@@ -154,5 +163,6 @@ export const Tree = () => {
 		postorder,
 		height,
 		depth,
+		isBalanced,
 	};
 };

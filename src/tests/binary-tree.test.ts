@@ -128,4 +128,16 @@ describe('Binary Search Tree FC', () => {
 		bst.buildTree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 		expect(bst.depth(8)).toBe(2);
 	});
+
+	it('checks if the tree is balanced', () => {
+		const bst = Tree();
+		bst.buildTree([1, 2, 3, 4, 5]);
+		expect(bst.isBalanced()).toBe(true);
+		const unBalancedTree = NodeFactory(4);
+		unBalancedTree.left = NodeFactory(3);
+		unBalancedTree.left.left = NodeFactory(2);
+		unBalancedTree.left.left.left = NodeFactory(1);
+		unBalancedTree.right = NodeFactory(5);
+		expect(bst.isBalanced(unBalancedTree)).toBe(false);
+	});
 });
