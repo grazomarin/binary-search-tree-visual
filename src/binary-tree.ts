@@ -58,10 +58,43 @@ export const Tree = () => {
 		}
 	}
 
+	function remove(value: number) {
+		//DELETING A LEAF NODE:
+		//if the node has no children make the node equal null
+		//DELETING A NODE WITH A SINGLE CHILD
+		// assign the child to the current node
+		//DELETING A NODE WITH BOTH CHILDREN
+		// assign the node to the smallest out of the bigger nodes
+		if (!tree) throw new Error('there is no tree to delete from');
+		let nodeToBeDeleted: Node | null | undefined = find(value);
+		if (!nodeToBeDeleted) throw new Error('cannot remove a non-existent node');
+		if (nodeToBeDeleted.right) {
+			let pointer: Node | null = nodeToBeDeleted.right;
+			if (!pointer.left) {
+				nodeToBeDeleted.value = nodeToBeDeleted.right.value;
+				nodeToBeDeleted.right = nodeToBeDeleted.right.right;
+			}
+			while (pointer.left) {
+				if (!pointer.left.left) {
+					nodeToBeDeleted.value = pointer.left.value;
+					pointer.left = pointer.left.right;
+					return;
+				}
+				pointer = pointer.left;
+			}
+		}
+		if (nodeToBeDeleted.left) {
+			nodeToBeDeleted = nodeToBeDeleted.left;
+			return;
+		}
+		nodeToBeDeleted = null;
+	}
+
 	return {
 		getTree: () => tree,
 		prettyPrint,
 		buildTree,
 		insert,
+		remove,
 	};
 };

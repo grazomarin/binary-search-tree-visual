@@ -50,4 +50,29 @@ describe('Binary Search Tree FC', () => {
 			},
 		});
 	});
+
+	it('deletes a number', () => {
+		const bst = Tree();
+		bst.buildTree([1, 2, 3, 4, 5]);
+		console.log(bst.prettyPrint());
+		bst.remove(3);
+		console.log(bst.prettyPrint());
+		expect(bst.getTree()).toMatchObject({
+			value: 4,
+			left: {
+				value: 1,
+				left: null,
+				right: {
+					value: 2,
+					left: null,
+					right: null,
+				},
+			},
+			right: {
+				value: 5,
+				left: null,
+				right: null,
+			},
+		});
+	});
 });
