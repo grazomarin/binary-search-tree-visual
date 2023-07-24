@@ -122,4 +122,10 @@ describe('Binary Search Tree FC', () => {
 		bst.buildTree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 		expect(bst.height()).toBe(4);
 	});
+
+	it('returns depth of the tree', () => {
+		const bst = Tree();
+		bst.buildTree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+		expect(bst.depth(8)).toBe(2);
+	});
 });

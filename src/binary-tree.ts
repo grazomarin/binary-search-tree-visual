@@ -134,6 +134,13 @@ export const Tree = () => {
 		return left >= right ? left : right;
 	}
 
+	function depth(value: number, node = tree, d = 1): number | undefined {
+		if (!node) throw new Error("value provided doesn't exist on the tree");
+		if (value === node.value) return d;
+		if (value < node.value) return depth(value, node.left, d + 1);
+		if (value > node.value) return depth(value, node.right, d + 1);
+	}
+
 	return {
 		getTree: () => tree,
 		prettyPrint,
@@ -146,5 +153,6 @@ export const Tree = () => {
 		preorder,
 		postorder,
 		height,
+		depth,
 	};
 };
