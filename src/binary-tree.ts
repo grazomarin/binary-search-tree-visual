@@ -45,9 +45,23 @@ export const Tree = () => {
 		}
 	}
 
+	function insert(value: number, node = tree) {
+		if (!node) throw new Error('there is no tree to insert into');
+		if (value === node.value) return;
+		if (value < node.value) {
+			if (node.left) insert(value, node.left);
+			else node.left = NodeFactory(value);
+		}
+		if (value > node.value) {
+			if (node.right) insert(value, node.right);
+			else node.right = NodeFactory(value);
+		}
+	}
+
 	return {
 		getTree: () => tree,
 		prettyPrint,
 		buildTree,
+		insert,
 	};
 };

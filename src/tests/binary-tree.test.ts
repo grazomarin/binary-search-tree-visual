@@ -23,4 +23,31 @@ describe('Binary Search Tree FC', () => {
 			},
 		});
 	});
+
+	it('inserts a number', () => {
+		const bst = Tree();
+		bst.buildTree([1, 2, 3, 4, 5]);
+		bst.insert(6);
+		expect(bst.getTree()).toMatchObject({
+			value: 3,
+			left: {
+				value: 1,
+				left: null,
+				right: {
+					value: 2,
+					left: null,
+					right: null,
+				},
+			},
+			right: {
+				value: 4,
+				left: null,
+				right: {
+					value: 5,
+					left: null,
+					right: { value: 6, left: null, right: null },
+				},
+			},
+		});
+	});
 });
