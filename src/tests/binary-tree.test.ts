@@ -90,4 +90,10 @@ describe('Binary Search Tree FC', () => {
 		});
 		expect(() => bst.find(99)).toThrow();
 	});
+
+	it('traverses a tree in Level Order', () => {
+		const bst = Tree();
+		bst.buildTree([1, 2, 3, 4, 5]);
+		expect(bst.levelOrder()).toEqual([3, 1, 4, 2, 5]);
+	});
 });

@@ -97,6 +97,21 @@ export const Tree = () => {
 		if (value > node.value) return find(value, node.right);
 	}
 
+	function levelOrder(): number[] {
+		if (!tree) throw new Error('cannot traverse an empty tree');
+		const queue: Node[] = [tree];
+		const returnArray: number[] = [];
+		while (queue.length !== 0) {
+			const current = queue.shift();
+			if (current) {
+				returnArray.push(current.value);
+				if (current.left) queue.push(current.left);
+				if (current.right) queue.push(current.right);
+			}
+		}
+		return returnArray;
+	}
+
 	return {
 		getTree: () => tree,
 		prettyPrint,
@@ -104,5 +119,6 @@ export const Tree = () => {
 		insert,
 		remove,
 		find,
+		levelOrder,
 	};
 };
