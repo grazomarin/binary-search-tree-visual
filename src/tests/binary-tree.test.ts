@@ -102,4 +102,10 @@ describe('Binary Search Tree FC', () => {
 		bst.buildTree([1, 2, 3, 4, 5]);
 		expect(bst.inorder()).toEqual([1, 2, 3, 4, 5]);
 	});
+
+	it('traverses a tree in Preorder', () => {
+		const bst = Tree();
+		bst.buildTree([1, 2, 3, 4, 5]);
+		expect(bst.preorder()).toEqual([3, 1, 2, 4, 5]);
+	});
 });
