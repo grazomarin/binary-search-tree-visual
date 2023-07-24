@@ -140,4 +140,14 @@ describe('Binary Search Tree FC', () => {
 		unBalancedTree.right = NodeFactory(5);
 		expect(bst.isBalanced(unBalancedTree)).toBe(false);
 	});
+
+	it('balances an unbalanced tree', () => {
+		const bst = Tree();
+		const unBalancedTree = NodeFactory(4);
+		unBalancedTree.left = NodeFactory(3);
+		unBalancedTree.left.left = NodeFactory(2);
+		unBalancedTree.left.left.left = NodeFactory(1);
+		unBalancedTree.right = NodeFactory(5);
+		const balancedTree = bst.rebalance(unBalancedTree);
+	});
 });

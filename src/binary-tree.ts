@@ -150,6 +150,19 @@ export const Tree = () => {
 		else return false;
 	}
 
+	function rebalance(node: Node) {
+		const array = inorder(node);
+		if (!array) throw new Error('tree is invalid');
+		return (function buildRecursion(array: number[]): Node | null {
+			if (array.length === 0) return null;
+			const middleIndex = Math.floor((array.length - 1) / 2);
+			const node = NodeFactory(array[middleIndex]);
+			node.left = buildRecursion(array.slice(0, middleIndex));
+			node.right = buildRecursion(array.slice(middleIndex + 1));
+			return node;
+		})(array);
+	}
+
 	return {
 		getTree: () => tree,
 		prettyPrint,
@@ -164,5 +177,6 @@ export const Tree = () => {
 		height,
 		depth,
 		isBalanced,
+		rebalance,
 	};
 };
