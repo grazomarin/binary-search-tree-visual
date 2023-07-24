@@ -75,4 +75,19 @@ describe('Binary Search Tree FC', () => {
 			},
 		});
 	});
+
+	it('finds a node', () => {
+		const bst = Tree();
+		bst.buildTree([12, 43, 54, 1, 43, 5, 10]);
+		const found = bst.find(10);
+		expect(found!.value).toBe(10);
+		expect(found).toMatchObject({
+			value: 10,
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+			right: expect.any(Object) || expect.anything(),
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+			left: expect.any(Object) || expect.anything(),
+		});
+		expect(() => bst.find(99)).toThrow();
+	});
 });

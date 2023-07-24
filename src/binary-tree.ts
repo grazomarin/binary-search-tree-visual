@@ -90,11 +90,19 @@ export const Tree = () => {
 		nodeToBeDeleted = null;
 	}
 
+	function find(value: number, node = tree) {
+		if (!node) throw new Error('node is not found');
+		if (node.value === value) return node;
+		if (value < node.value) return find(value, node.left);
+		if (value > node.value) return find(value, node.right);
+	}
+
 	return {
 		getTree: () => tree,
 		prettyPrint,
 		buildTree,
 		insert,
 		remove,
+		find,
 	};
 };
